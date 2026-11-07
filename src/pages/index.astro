@@ -1,4 +1,6 @@
 ---
+import SiteHeader from "../components/SiteHeader.astro";
+import "../style/main.css";
 ---
 
 <html lang="en">
@@ -8,9 +10,23 @@
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>LibreLauncher</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<SiteHeader currentPage="about" />
+
+		<main class="content">
+			<h1>LibreLauncher</h1>
+			<p>Free and easy-to-use Minecraft launcher</p>
+			<button class="source-button" type="button">Source code</button>
+			<img class="launcher-screenshot" src="/librelauncherhometransparent.png" alt="Screenshot of the LibreLauncher home screen" />
+		</main>
+
+		<script>
+			const sourceButton = document.querySelector(".source-button");
+			sourceButton?.addEventListener("click", () => {
+				window.open("https://github.com/consler/LibreLauncher");
+			});
+		</script>
 	</body>
 </html>

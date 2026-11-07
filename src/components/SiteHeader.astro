@@ -1,0 +1,23 @@
+---
+import "../style/header.css";
+
+interface Props {
+	currentPage: "about" | "downloads" | "news";
+}
+
+const { currentPage } = Astro.props;
+---
+
+<header class="hc">
+	<a class="logo" href="/"><img src="/favicon.svg" alt="" aria-hidden="true" />LibreLauncher</a>
+	<button class="toggle" type="button" aria-expanded="false" aria-controls="hc-panel" aria-label="Menu"><i></i><i></i><i></i></button>
+	<div class="panel" id="hc-panel">
+		<nav aria-label="Main">
+			<ul class="links">
+				<li><a href="/" aria-current={currentPage === "about" ? "page" : undefined}>About</a></li>
+				<li><a href="/downloads/" aria-current={currentPage === "downloads" ? "page" : undefined}>Downloads</a></li>
+				<li><a href="/news/" aria-current={currentPage === "news" ? "page" : undefined}>News</a></li>
+			</ul>
+		</nav>
+	</div>
+</header>
