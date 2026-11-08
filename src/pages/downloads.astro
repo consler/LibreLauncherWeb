@@ -17,7 +17,68 @@ import "../style/main.css";
 
 		<main class="content">
 			<h1>Downloads</h1>
-			<p>Downloads for LibreLauncher will be available here soon.</p>
+			<p>Choose your platform to see the available package formats.</p>
+
+			<div class="download-platforms" role="group" aria-label="Choose your platform">
+				<button class="download-platform" type="button" aria-pressed="true" aria-controls="windows-downloads" data-platform="windows">Windows</button>
+				<button class="download-platform" type="button" aria-pressed="false" aria-controls="macos-downloads" data-platform="macos">macOS</button>
+				<button class="download-platform" type="button" aria-pressed="false" aria-controls="linux-downloads" data-platform="linux">Linux</button>
+				<button class="download-platform" type="button" aria-pressed="false" aria-controls="universal-downloads" data-platform="universal">Universal</button>
+			</div>
+
+			<section class="download-options" id="windows-downloads" aria-labelledby="windows-heading">
+				<h2 id="windows-heading">Windows downloads</h2>
+				<div class="download-formats">
+					<a href="https://github.com/consler/LibreLauncher/releases/download/v2.5/LibreLauncher-Windows-EXE.exe">.exe</a>
+					<a href="https://github.com/consler/LibreLauncher/releases/download/v2.5/LibreLauncher-Windows-MSI.msi">.msi</a>
+					<a href="https://github.com/consler/LibreLauncher/releases/download/v2.5/LibreLauncher-Windows-Portable.tar.gz">.tar.gz</a>
+					<a href="https://github.com/consler/LibreLauncher/releases/download/v2.5/librelauncher-2.5-universal.jar">.jar</a>
+				</div>
+			</section>
+
+			<section class="download-options" id="macos-downloads" aria-labelledby="macos-heading" hidden>
+				<h2 id="macos-heading">macOS downloads</h2>
+				<div class="download-formats">
+					<a href="https://github.com/consler/LibreLauncher/releases/download/v2.5/LibreLauncher-macOS-PKG.pkg">.pkg</a>
+					<a href="https://github.com/consler/LibreLauncher/releases/download/v2.5/LibreLauncher-macOS-DMG.dmg">.dmg</a>
+					<a href="https://github.com/consler/LibreLauncher/releases/download/v2.5/LibreLauncher-macOS-Portable.zip">.zipa</a>
+					<a href="https://github.com/consler/LibreLauncher/releases/download/v2.5/librelauncher-2.5-universal.jar">.jar</a>
+				</div>
+			</section>
+
+			<section class="download-options" id="linux-downloads" aria-labelledby="linux-heading" hidden>
+				<h2 id="linux-heading">Linux downloads</h2>
+				<div class="download-formats">
+					<a href="https://github.com/consler/LibreLauncher/releases/download/v2.5/LibreLauncher-Linux-RPM.rpm">.rpm</a>
+					<a href="https://github.com/consler/LibreLauncher/releases/download/v2.5/LibreLauncher-Linux-DEB.deb">.deb</a>
+					<a href="https://github.com/consler/LibreLauncher/releases/download/v2.5/LibreLauncher-Linux-AppImage.AppImage">.appimage</a>
+					<a href="https://github.com/consler/LibreLauncher/releases/download/v2.5/LibreLauncher-Linux-Portable.tar.gz">.tar.gz</a>
+					<a href="https://github.com/consler/LibreLauncher/releases/download/v2.5/librelauncher-2.5-universal.jar">.jar</a>
+				</div>
+			</section>
+
+			<section class="download-options" id="universal-downloads" aria-labelledby="universal-heading" hidden>
+				<h2 id="universal-heading">Universal download</h2>
+				<div class="download-formats">
+					<a href="https://github.com/consler/LibreLauncher/releases/download/v2.5/librelauncher-2.5-universal.jar">.jar</a>
+				</div>
+			</section>
 		</main>
 	</body>
 </html>
+
+<script>
+	const platformButtons = document.querySelectorAll<HTMLButtonElement>(".download-platform");
+	const downloadOptions = document.querySelectorAll<HTMLElement>(".download-options");
+
+	platformButtons.forEach((button) => {
+		button.addEventListener("click", () => {
+			platformButtons.forEach((platformButton) => {
+				platformButton.setAttribute("aria-pressed", String(platformButton === button));
+			});
+			downloadOptions.forEach((options) => {
+				options.hidden = options.id !== button.getAttribute("aria-controls");
+			});
+		});
+	});
+</script>

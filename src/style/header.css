@@ -1,6 +1,6 @@
 /* Source: https://uicookies.com/snippets/saas-header-with-dropdown-menu/?fw=bootstrap */
-.hc{--hc-text:#16202e;--hc-muted:#42506b;--hc-soft:#f2f5fa;--hc-line:#eaeef4;--hc-accent:#2563eb;
-    position:relative;display:flex;align-items:center;justify-content:center;gap:34px;min-height:70px;padding:0 36px;background:#fff;
+.hc{--hc-text:var(--primary-text);--hc-muted:var(--header-muted);--hc-soft:var(--header-soft);--hc-line:var(--border-color);--hc-accent:var(--focus-color);
+    position:relative;display:flex;align-items:center;justify-content:center;gap:34px;min-height:70px;padding:0 36px;background:var(--surface-background);
     border-bottom:1px solid var(--hc-line);color:var(--hc-text);
     font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
 .hc,.hc *{box-sizing:border-box}
@@ -9,7 +9,7 @@
 .hc a:focus-visible,.hc button:focus-visible{outline:2px solid var(--hc-accent);outline-offset:2px}
 .hc .logo{display:flex;align-items:center;gap:9px;font-weight:800;font-size:1.05rem;letter-spacing:-.01em;color:var(--hc-text);border-radius:8px}
 .hc .logo img{width:28px;height:28px;object-fit:contain}
-.hc .panel{flex:0 1 auto;display:flex;align-items:center;gap:34px}
+.hc .panel{order:1;flex:0 1 auto;display:flex;align-items:center;gap:34px}
 .hc .panel>nav{margin-right:0}
 .hc .links{display:flex;gap:6px}
 .hc .links>li{position:relative}
@@ -24,15 +24,23 @@
 .hc .cta{font-size:.88rem;font-weight:700;color:#fff;background:var(--hc-accent);padding:10px 18px;border-radius:10px;transition:background .15s}
 .hc .cta:hover{background:#1d4fd1}
 .hc .toggle{display:none;margin-left:auto;width:44px;height:44px;flex-direction:column;align-items:center;justify-content:center;gap:5px;
-    background:#fff;border:1px solid #d9dfe8;border-radius:10px;cursor:pointer}
+    background:var(--surface-background);border:1px solid var(--hc-line);border-radius:10px;cursor:pointer}
 .hc .toggle i{display:block;width:20px;height:2px;border-radius:2px;background:var(--hc-text);transition:transform .2s,opacity .2s}
 .hc .toggle[aria-expanded="true"] i:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .hc .toggle[aria-expanded="true"] i:nth-child(2){opacity:0}
 .hc .toggle[aria-expanded="true"] i:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
-@media (max-width:991.98px){
-    .hc{flex-wrap:wrap;gap:0;padding:13px 16px}
-    .hc .toggle{display:flex}
-    .hc .panel{display:none;flex-basis:100%;flex-direction:column;align-items:stretch;gap:12px;padding:12px 0 4px}
+.hc .theme-toggle{position:absolute;top:50%;right:36px;transform:translateY(-50%);display:grid;place-items:center;width:42px;height:42px;padding:9px;border:1px solid var(--hc-line);border-radius:9px;background:var(--hc-soft);color:var(--hc-text);
+    cursor:pointer;transition:background .15s,color .15s}
+.hc .theme-toggle svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.hc .theme-toggle .sun-icon{display:none}
+:root[data-theme="light"] .hc .theme-toggle .moon-icon{display:none}
+:root[data-theme="light"] .hc .theme-toggle .sun-icon{display:block}
+.hc .theme-toggle:hover{background:var(--hc-line)}
+@media (max-width:992px){
+    .hc{justify-content:space-between;flex-wrap:wrap;gap:0;padding:13px 16px}
+    .hc .toggle{order:1;display:flex;margin-left:auto}
+    .hc .theme-toggle{position:static;order:2;transform:none;margin-left:8px}
+    .hc .panel{order:3;display:none;flex-basis:100%;flex-direction:column;align-items:stretch;gap:12px;padding:12px 0 4px}
     .hc .panel[data-open]{display:flex}
     .hc .panel>nav{margin:0}
     .hc .links{flex-direction:column;gap:2px}
