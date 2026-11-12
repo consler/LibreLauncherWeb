@@ -1,0 +1,73 @@
+.download-platforms {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: .75rem;
+    margin-bottom: 2rem;
+}
+
+.download-platform,
+.download-formats a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 22px;
+    padding: .7rem 1rem;
+    border: 1px solid var(--button-background);
+    border-radius: 8px;
+    font: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background .15s, border-color .15s, color .15s, transform .15s;
+}
+
+.download-platform {
+    background: var(--surface-background);
+    color: var(--primary-text);
+    cursor: pointer;
+}
+
+.download-platform[aria-pressed="true"],
+.download-platform:hover {
+    background: var(--button-background);
+    color: var(--button-text);
+}
+
+.download-platform:focus-visible,
+.download-formats a:focus-visible {
+    outline: 3px solid var(--focus-color);
+    outline-offset: 3px;
+}
+
+.download-options h2 {
+    margin: 0 0 .75rem;
+    font-size: 1.25rem;
+}
+
+.download-formats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .75rem;
+}
+
+.download-formats a {
+    background: var(--button-background);
+    color: var(--button-text);
+}
+
+.download-formats a:hover {
+    border-color: var(--button-hover);
+    background: var(--button-hover);
+}
+
+@media (max-width: 520px) {
+    .download-platforms {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .download-platform,
+    .download-formats a {
+        transition: none;
+    }
+}

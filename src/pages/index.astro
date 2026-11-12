@@ -1,6 +1,7 @@
 ---
 import SiteHeader from "../components/SiteHeader.astro";
 import "../style/main.css";
+import "../style/index.css";
 ---
 
 <html lang="en">
@@ -18,11 +19,62 @@ import "../style/main.css";
 		<main class="content">
 			<h1>LibreLauncher</h1>
 			<p>Free and easy-to-use Minecraft launcher</p>
-			<button class="source-button" type="button">Source code</button>
 			<img class="launcher-screenshot" src="/librelauncherhometransparent.png" alt="Screenshot of the LibreLauncher home screen" />
 		</main>
 
+		<main class="content">
+			<h1>Features</h1>
+			<ul class="feature-list">
+				<li>Support for all Minecraft Versions</li>
+				<li>Major mod-loader support</li>
+				<li>Microsoft account support</li>
+				<li>Support for multiple instances</li>
+				<li>Java auto-detection</li>
+				<li>In-app modrinth downloads/updates</li>
+				<li>Instance import/export</li>
+				<li>Windows, macOS, Linux(partial) support</li>
+			</ul>
+		</main>
+
+		<!--<main class="content">-->
+		<!--	<h1>Goals</h1>-->
+		<!--	<ul class="feature-list">-->
+		<!--		<li>OptiFine support</li>-->
+		<!--		<li>World editor(with NBT editing)</li>-->
+		<!--		<li>Instance import from other launchers</li>-->
+		<!--		<li>Customizable UI</li>-->
+		<!--		<li>Browser-based Microsoft log-in</li>-->
+		<!--		<li>Smart crash reports</li>-->
+		<!--		<li>Safety features for sharing logs</li>-->
+		<!--		<li>Share libraries among instances</li>-->
+		<!--		<li>Support for musl libc based systems</li>-->
+		<!--		<li>Support for BSD-based systems</li>-->
+		<!--		<li>Extensive feature documentation</li>-->
+		<!--		<li>Plugins/extension support</li>-->
+		<!--	</ul>-->
+		<!--</main>-->
+
+		<button class="source-button" type="button">Source code</button>
+
 		<script>
+			const screenshot = document.querySelector<HTMLImageElement>(".launcher-screenshot");
+			const themeObserver = new MutationObserver(() => {
+				if (screenshot) {
+					screenshot.src = document.documentElement.dataset.theme === "light"
+						? "/librelauncherhomelight.png"
+						: "/librelauncherhometransparent.png";
+				}
+			});
+
+			themeObserver.observe(document.documentElement, {
+				attributes: true,
+				attributeFilter: ["data-theme"],
+			});
+
+			if (screenshot && document.documentElement.dataset.theme === "light") {
+				screenshot.src = "/librelauncherhomelight.png";
+			}
+
 			const sourceButton = document.querySelector(".source-button");
 			sourceButton?.addEventListener("click", () => {
 				window.open("https://github.com/consler/LibreLauncher");
