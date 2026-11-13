@@ -1,14 +1,14 @@
 :root {
     color-scheme: dark;
-    --page-background: #111811;
-    --surface-background: #19231b;
-    --primary-text: #e7eee7;
-    --muted-text: #b0beb1;
+    --page-background: #121912;
+    --surface-background: #121912;
+    --primary-text: #ffffff;
+    --muted-text: #898f89;
     --border-color: #354639;
     --header-soft: #26332a;
     --header-muted: #b6c3b7;
-    --button-background: #31563a;
-    --button-hover: #3c6943;
+    --button-background: #23402c;
+    --button-hover: #23402c;
     --button-text: #fff;
     --focus-color: #8dfe51;
 }
@@ -17,7 +17,7 @@
     color-scheme: light;
     --page-background: #fff;
     --surface-background: #fff;
-    --primary-text: #17231b;
+    --primary-text: #133920;
     --muted-text: #59665b;
     --border-color: #dfe7dc;
     --header-soft: #f2f5fa;
