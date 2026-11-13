@@ -11,6 +11,7 @@
     --button-hover: #23402c;
     --button-text: #fff;
     --focus-color: #8dfe51;
+    --hyperlink-color: #8dfe51;
 }
 
 :root[data-theme="light"] {
@@ -62,6 +63,11 @@ body {
     color: var(--muted-text);
     font-size: 1.05rem;
     line-height: 1.6;
+}
+
+.content a {
+    color: inherit;
+    text-decoration: underline;
 }
 
 @media (max-width: 800px) {
