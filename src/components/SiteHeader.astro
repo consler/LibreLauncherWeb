@@ -26,6 +26,27 @@ const { currentPage } = Astro.props;
 </header>
 
 <script is:inline>
+	const menuToggle = document.querySelector(".hc .toggle");
+	const menuPanel = document.querySelector("#hc-panel");
+
+	menuToggle?.addEventListener("click", () => {
+		const isOpen = menuToggle.getAttribute("aria-expanded") === "true";
+		menuToggle.setAttribute("aria-expanded", String(!isOpen));
+		if (isOpen) {
+			menuPanel?.removeAttribute("data-open");
+		} else {
+			menuPanel?.setAttribute("data-open", "");
+		}
+	});
+
+	document.addEventListener("keydown", (event) => {
+		if (event.key === "Escape" && menuToggle?.getAttribute("aria-expanded") === "true") {
+			menuToggle.setAttribute("aria-expanded", "false");
+			menuPanel?.removeAttribute("data-open");
+			menuToggle.focus();
+		}
+	});
+
 	const themeToggle = document.querySelector(".theme-toggle");
 	const root = document.documentElement;
 	const savedTheme = localStorage.getItem("theme");
